@@ -1,0 +1,7 @@
+:host {
+  display: block;
+}
+
+p {
+  animation-delay: 0.3s;
+}

@@ -5,8 +5,7 @@ import { LoadSceneComponent } from './load-scene/load-scene.component';
 
 @NgModule({
   declarations: [LoadSceneComponent],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule],
+  exports: [LoadSceneComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

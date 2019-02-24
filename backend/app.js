@@ -2,9 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const mongoDbUrl = 'MONGODB_CONNECTION_URL'
+const mongoDbUrl = 'mongodb+srv://hackutd19:8qNhLzO3D4Gk71fy@cured-4q0uw.mongodb.net/test?retryWrites=true'
 
 const exampleRoute = require("./routes/example_route");
+
+const googleHomeTestRoute = require('./routes/minitest');
 
 const app = express();
 
@@ -35,5 +37,6 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/example_api", exampleRoute);
+app.use("/api/googlehome/test", googleHomeTestRoute);
 
 module.exports = app;

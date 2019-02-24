@@ -1,3 +1,26 @@
-<p>
-  landing-view works!
-</p>
+<div class="container h-100">
+  <div class="row justify-content-md-center h-100">
+    <div class="col-lg-3 col-4 align-self-center">
+      <div class="login-frame w-100">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+          <mat-form-field appearance="outline" class="w-100" style="font-size: 10px">
+            <mat-label>Account</mat-label>
+            <mat-select formControlName="accountType">
+              <mat-option value="regular">Regular</mat-option>
+              <mat-option value="professional">Professional</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" formControlName="username">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Password</mat-label>
+            <input matInput type="text" formControlName="password">
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" class="w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

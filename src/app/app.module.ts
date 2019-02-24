@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
+import { LandingViewComponent } from './landing-view/landing-view.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingViewComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuth, AngularFireAuthModule } from "@angular/fire/auth";
+import { FirestoreSettingsToken} from '@angular/fire/firestore';
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
@@ -31,7 +32,7 @@ import { SharedModule } from "./shared/shared.module";
         SharedModule,
         AppRoutingModule,
     ],
-    providers: [],
+    providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,13 +1,14 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 import { Action } from "../actions.model";
+import { DatabaseService } from '../core/database.service';
 
 @Component({
     selector: "app-user-main",
     templateUrl: "./user-main.component.html",
     styleUrls: ["./user-main.component.css"],
 })
-export class UserMainComponent {
+export class UserMainComponent implements OnInit{
     public actionsCollection: Action[] = [
         {
             type: "image",
@@ -31,8 +32,14 @@ export class UserMainComponent {
         },
     ];
     public interacting = false;
+    public emotionResult: any;
 
-    constructor() {}
+    constructor(private databaseService: DatabaseService) {
+    }
+
+    ngOnInit() {
+        this.emotionResult = this.databaseService.getSentimentResults();
+    }
 
     public onInitSession() {
         this.interacting = !this.interacting;

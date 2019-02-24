@@ -22,8 +22,8 @@ export class DatabaseService {
         this.firestore.collection("cases").add(data);
     }
 
-    public getEngagedCases(): Observable<SentimentResult[]> {
+    public getSentimentResults(): Observable<SentimentResult[]> {
         // Retrieve a real-time updated list
-        return this.firestore.collection<SentimentResult>("sentiment").valueChanges();
+        return this.firestore.collection<SentimentResult>("sentiments").valueChanges();
     }
 }

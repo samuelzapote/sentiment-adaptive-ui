@@ -11,6 +11,12 @@
             </button>
         </div>
     </div>
+    <ul>
+    <li *ngFor="let item of emotionResult | async">
+        {{ item.name }}
+        {{ item.score }}
+    </li>
+    </ul>
     <div class="row">
         <div class="col-12">
             <app-interact-session

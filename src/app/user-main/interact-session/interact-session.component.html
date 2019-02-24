@@ -1,15 +1,22 @@
 <mat-card class="m-5">
-    <mat-card-header>
-      
-    </mat-card-header>
-    <mat-card-content>
-      <app-dynamic-button *ngIf="currentAction === 'dynamic'" (actionComplete)="executeNextAction()"></app-dynamic-button>
-      <app-image-button *ngIf="currentAction === 'image'" (actionComplete)="executeNextAction()"></app-image-button>
-      <app-text-button *ngIf="currentAction === 'text'" (actionComplete)="executeNextAction()"></app-text-button>
-      <app-visual-button *ngIf="currentAction === 'visual'" (actionComplete)="executeNextAction()"></app-visual-button>
+    <mat-card-header> </mat-card-header>
+    <mat-card-content [ngSwitch]="getCurrentAction()" *ngIf="actionsCollectionData.length > 0">
+        <app-dynamic-button
+            *ngSwitchCase="'dynamic'"
+            (actionComplete)="executeNextAction()"
+        ></app-dynamic-button>
+        <app-image-button
+            *ngSwitchCase="'image'"
+            (actionComplete)="executeNextAction()"
+        ></app-image-button>
+        <app-text-button
+            *ngSwitchCase="'text'"
+            (actionComplete)="executeNextAction()"
+        ></app-text-button>
+        <app-visual-button
+            *ngSwitchCase="'visual'"
+            (actionComplete)="executeNextAction()"
+        ></app-visual-button>
     </mat-card-content>
-    <mat-card-actions>
-
-    </mat-card-actions>
-  </mat-card>
-  
+    <mat-card-actions> </mat-card-actions>
+</mat-card>

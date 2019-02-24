@@ -1,40 +1,60 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { Router } from "@angular/router";
+import { first } from "rxjs/operators";
+
+import { AuthService } from "../core/auth.service";
 
 @Component({
-  selector: 'app-landing-view',
-  templateUrl: './landing-view.component.html',
-  styleUrls: ['./landing-view.component.css']
+    selector: "app-landing-view",
+    templateUrl: "./landing-view.component.html",
+    styleUrls: ["./landing-view.component.css"],
 })
 export class LandingViewComponent implements OnInit {
-  public loggingIn: boolean = true;
-  public registering: boolean = false;
+    public loggingIn = true;
+    public loginForm = this.fb.group({
+        accountType: [""],
+        email: [""],
+        password: [""],
+    });
+    public registering = false;
 
-  public loginForm = this.fb.group({
-    accountType: [''],
-    username: [''],
-    password: ['']
-  });
+    constructor(private fb: FormBuilder, public router: Router, private auth: AuthService) {}
 
-  constructor(private fb: FormBuilder, public router: Router) { }
+    public initLoginMode() {
+        this.loggingIn = true;
+        this.registering = false;
+    }
 
-  ngOnInit() {
-    
-  }
+    public initRegisterMode() {
+        this.loggingIn = false;
+        this.registering = true;
+    }
 
-  onSubmit(formData: FormGroup) {
-    console.log(formData);
-    this.router.navigate(['/control']);
-  };
+    public ngOnInit() {
+        // Check if the user is already logged in,
+        // and if so, redirect them to the main page
+        this.auth.user.pipe(first()).subscribe(() => {
+            this.router.navigate(["control"]);
+        });
+    }
 
-  initRegisterMode() {
-    this.loggingIn = false;
-    this.registering = true;
-  };
+    public async onSubmit() {
+        const data = this.loginForm.value;
 
-  initLoginMode() {
-    this.loggingIn = true;
-    this.registering = false;
-  };
+        try {
+            if (this.loggingIn) {
+                // Log the user in
+                await this.auth.login(data.email, data.password);
+                this.router.navigate(["control"]);
+            } else {
+                // Create a new user, and then log in
+                await this.auth.register(data.email, data.password);
+                this.router.navigate(["control"]);
+            }
+        } catch (e) {
+            // Debugging
+            alert(e);
+        }
+    }
 }

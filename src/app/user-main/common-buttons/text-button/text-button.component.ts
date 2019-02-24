@@ -1,19 +1,18 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 
 @Component({
-  selector: 'app-text-button',
-  templateUrl: './text-button.component.html',
-  styleUrls: ['./text-button.component.css']
+    selector: "app-text-button",
+    templateUrl: "./text-button.component.html",
+    styleUrls: ["./text-button.component.css"],
 })
 export class TextButtonComponent implements OnInit {
-  @Output() actionComplete: EventEmitter<any> = new EventEmitter();
+    @Output() public actionComplete: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+    constructor() {}
 
-  ngOnInit() {
-  }
+    public ngOnInit() {}
 
-  onActionComplete() {
-    this.actionComplete.emit(null);
-  }
+    public onActionComplete() {
+        this.actionComplete.emit(null);
+    }
 }

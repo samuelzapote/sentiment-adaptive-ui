@@ -1,19 +1,18 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 
 @Component({
-  selector: 'app-dynamic-button',
-  templateUrl: './dynamic-button.component.html',
-  styleUrls: ['./dynamic-button.component.css']
+    selector: "app-dynamic-button",
+    templateUrl: "./dynamic-button.component.html",
+    styleUrls: ["./dynamic-button.component.css"],
 })
 export class DynamicButtonComponent implements OnInit {
-  @Output() actionComplete: EventEmitter<any> = new EventEmitter();
+    @Output() public actionComplete: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+    constructor() {}
 
-  ngOnInit() {
-  }
+    public ngOnInit() {}
 
-  onActionComplete() {
-    this.actionComplete.emit(null);
-  }
+    public onActionComplete() {
+        this.actionComplete.emit(null);
+    }
 }

@@ -1,33 +1,38 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from "@angular/core";
+import { Action } from "src/app/actions.model";
 
 @Component({
-  selector: 'app-interact-session',
-  templateUrl: './interact-session.component.html',
-  styleUrls: ['./interact-session.component.css']
+    selector: "app-interact-session",
+    templateUrl: "./interact-session.component.html",
+    styleUrls: ["./interact-session.component.css"],
 })
 export class InteractSessionComponent implements OnInit {
-  @Input() actionsCollectionData
-  public actionsOrder: string[] = ['dynamic', 'image', 'text', 'visual'];
-  public actionIndex: number = 0;
-  public currentAction: string = '';
+    public actionIndex = 0;
+    @Input() public actionsCollectionData: Action[];
+    public actionsOrder: string[] = ["dynamic", "image", "text", "visual"];
+    public currentAction = "";
 
-  constructor() { }
+    constructor() {}
 
-  ngOnInit() {
-    this.runDeterminedAction();
-  }
+    public executeNextAction() {
+        if (this.actionIndex >= this.actionsOrder.length - 1) {
+            console.log("Actions Done!");
+            this.currentAction = "";
+        } else {
+            this.actionIndex = this.actionIndex + 1;
+            this.runDeterminedAction();
+        }
+    }
 
-  runDeterminedAction() {
-    this.currentAction = this.actionsOrder[this.actionIndex];
-  };
+    public getCurrentAction() {
+        return this.actionsCollectionData[this.actionIndex].type;
+    }
 
-  executeNextAction() {
-    if (this.actionIndex >= this.actionsOrder.length - 1) {
-      console.log('Actions Done!');
-      this.currentAction = '';
-    } else {
-      this.actionIndex = this.actionIndex + 1;
-      this.runDeterminedAction();
-    };
-  };
+    public ngOnInit() {
+        this.runDeterminedAction();
+    }
+
+    public runDeterminedAction() {
+        this.currentAction = this.actionsOrder[this.actionIndex];
+    }
 }

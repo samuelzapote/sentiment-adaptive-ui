@@ -1,19 +1,18 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 
 @Component({
-  selector: 'app-image-button',
-  templateUrl: './image-button.component.html',
-  styleUrls: ['./image-button.component.css']
+    selector: "app-image-button",
+    templateUrl: "./image-button.component.html",
+    styleUrls: ["./image-button.component.css"],
 })
 export class ImageButtonComponent implements OnInit {
-  @Output() actionComplete: EventEmitter<any> = new EventEmitter();
+    @Output() public actionComplete: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+    constructor() {}
 
-  ngOnInit() {
-  }
+    public ngOnInit() {}
 
-  onActionComplete() {
-    this.actionComplete.emit(null);
-  }
+    public onActionComplete() {
+        this.actionComplete.emit(null);
+    }
 }

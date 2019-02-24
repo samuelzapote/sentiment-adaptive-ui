@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-image-button',
@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./image-button.component.css']
 })
 export class ImageButtonComponent implements OnInit {
+  @Output() actionComplete: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onActionComplete() {
+    this.actionComplete.emit(null);
+  }
 }

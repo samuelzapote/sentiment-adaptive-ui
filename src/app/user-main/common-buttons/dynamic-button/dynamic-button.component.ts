@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-dynamic-button',
@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dynamic-button.component.css']
 })
 export class DynamicButtonComponent implements OnInit {
+  @Output() actionComplete: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onActionComplete() {
+    this.actionComplete.emit(null);
+  }
 }

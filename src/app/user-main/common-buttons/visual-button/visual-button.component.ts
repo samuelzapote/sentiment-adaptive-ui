@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-visual-button',
@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./visual-button.component.css']
 })
 export class VisualButtonComponent implements OnInit {
+  @Output() actionComplete: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onActionComplete() {
+    this.actionComplete.emit(null);
+  }
 }

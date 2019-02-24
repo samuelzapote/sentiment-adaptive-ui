@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./landing-view.component.css']
 })
 export class LandingViewComponent implements OnInit {
+  public loggingIn: boolean = true;
+  public registering: boolean = false;
+
   public loginForm = this.fb.group({
     accountType: [''],
     username: [''],
@@ -23,5 +26,15 @@ export class LandingViewComponent implements OnInit {
   onSubmit(formData: FormGroup) {
     console.log(formData);
     this.router.navigate(['/control']);
+  };
+
+  initRegisterMode() {
+    this.loggingIn = false;
+    this.registering = true;
+  };
+
+  initLoginMode() {
+    this.loggingIn = true;
+    this.registering = false;
   };
 }

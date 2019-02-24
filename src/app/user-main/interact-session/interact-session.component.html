@@ -3,10 +3,10 @@
       
     </mat-card-header>
     <mat-card-content>
-      <app-dynamic-button *ngIf="dynamicAction"></app-dynamic-button>
-      <app-image-button *ngIf="imageAction"></app-image-button>
-      <app-text-button *ngIf="textAction"></app-text-button>
-      <app-visual-button *ngIf="visualAction"></app-visual-button>
+      <app-dynamic-button *ngIf="currentAction === 'dynamic'" (actionComplete)="executeNextAction()"></app-dynamic-button>
+      <app-image-button *ngIf="currentAction === 'image'" (actionComplete)="executeNextAction()"></app-image-button>
+      <app-text-button *ngIf="currentAction === 'text'" (actionComplete)="executeNextAction()"></app-text-button>
+      <app-visual-button *ngIf="currentAction === 'visual'" (actionComplete)="executeNextAction()"></app-visual-button>
     </mat-card-content>
     <mat-card-actions>
 

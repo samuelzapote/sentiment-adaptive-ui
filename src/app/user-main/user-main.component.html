@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <button *ngIf="!interacting" mat-raised-button color="primary" (click)="onInitSession()" style="border-radius: 1em 1em 1em 1em;">Interact</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <app-interact-session *ngIf="interacting"></app-interact-session>
+        </div>
+    </div>
+</div>

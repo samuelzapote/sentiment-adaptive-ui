@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./interact-session.component.css']
 })
 export class InteractSessionComponent implements OnInit {
+  public dynamicAction: boolean = true;
+  public imageAction: boolean = true;
+  public textAction: boolean = true;
+  public visualAction: boolean = true;
 
   constructor() { }
 

@@ -1,4 +1,8 @@
-<p>
-  image-button works!
-</p>
-<button mat-flat-button (click)="onActionComplete()">Next</button>
+<button
+    class="mr-2"
+    *ngFor="let element of actionData.options"
+    mat-stroked-button
+    (click)="onActionComplete(element)"
+>
+    {{ element }}
+</button>

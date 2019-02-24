@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { first } from "rxjs/operators";
 import { Action } from "src/app/actions.model";
+import { SentimentService } from "src/app/core/sentiment.service";
 
 @Component({
     selector: "app-interact-session",
@@ -9,30 +11,41 @@ import { Action } from "src/app/actions.model";
 export class InteractSessionComponent implements OnInit {
     public actionIndex = 0;
     @Input() public actionsCollectionData: Action[];
-    public actionsOrder: string[] = ["dynamic", "image", "text", "visual"];
-    public currentAction = "";
+    public collectiveResponseData = "";
+    public currentAction: Action;
 
-    constructor() {}
+    public constructor(private sentimentService: SentimentService) {}
 
-    public executeNextAction() {
-        if (this.actionIndex >= this.actionsOrder.length - 1) {
+    public executeNextAction(selectedData: string) {
+        if (this.actionIndex >= this.actionsCollectionData.length - 1) {
             console.log("Actions Done!");
-            this.currentAction = "";
+            this.currentAction = undefined;
+            this.publishResponseData(this.collectiveResponseData);
         } else {
+            this.collectiveResponseData += selectedData + " ";
             this.actionIndex = this.actionIndex + 1;
             this.runDeterminedAction();
         }
     }
 
     public getCurrentAction() {
-        return this.actionsCollectionData[this.actionIndex].type;
+        return this.currentAction;
     }
 
     public ngOnInit() {
         this.runDeterminedAction();
     }
 
+    public publishResponseData(responseData: string) {
+        return this.sentimentService
+            .getPrediction(responseData)
+            .pipe(first())
+            .subscribe((r) => {
+                console.log(r);
+            });
+    }
+
     public runDeterminedAction() {
-        this.currentAction = this.actionsOrder[this.actionIndex];
+        this.currentAction = this.actionsCollectionData[this.actionIndex];
     }
 }

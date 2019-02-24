@@ -7,6 +7,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCard, MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 
@@ -21,6 +22,7 @@ import { LoadSceneComponent } from "./load-scene/load-scene.component";
         MatInputModule,
         MatButtonModule,
         MatCardModule,
+        MatIconModule,
         HttpClientModule,
     ],
     exports: [
@@ -31,6 +33,7 @@ import { LoadSceneComponent } from "./load-scene/load-scene.component";
         MatInputModule,
         MatButtonModule,
         MatCardModule,
+        MatIconModule,
     ],
 })
 export class SharedModule {}

@@ -1,4 +1,7 @@
-<p>
-  visual-button works!
-</p>
-<button mat-flat-button (click)="onActionComplete()">Next</button>
+<button
+    *ngFor="let element of actionData.options"
+    mat-flat-button
+    (click)="onActionComplete(element)"
+>
+    {{ element }}
+</button>

@@ -12,6 +12,7 @@ export const environment = {
         storageBucket: "cured-b4d50.appspot.com",
         messagingSenderId: "833461057666",
     },
+    backendUrl: "http://localhost:5000/sentiments",
 };
 
 /*

@@ -1,7 +1,11 @@
-<button
-    *ngFor="let element of actionData.options"
-    mat-flat-button
-    (click)="onActionComplete(element)"
->
-    {{ element }}
-</button>
+<div class="row">
+    <div class="col" *ngFor="let element of actionData.options">
+        <button
+            mat-flat-button
+            (click)="onActionComplete(element)"
+            style="padding: 2em 1em 2em 1em"
+        >
+            {{ element }}
+        </button>
+    </div>
+</div>

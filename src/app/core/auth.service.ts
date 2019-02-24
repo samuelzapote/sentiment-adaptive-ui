@@ -20,4 +20,8 @@ export class AuthService {
     public async register(email: string, password: string) {
         await this.auth.auth.createUserWithEmailAndPassword(email, password);
     }
+
+    public getUser() {
+        console.log(this.user);
+    }
 }

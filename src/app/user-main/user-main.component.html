@@ -1,28 +1,35 @@
-<div class="container">
-    <div class="row">
-        <div class="col-12">
+<div class="container w-100 h-100 m-0" style="max-width: 100%; overflow: auto">
+    <div class="row" *ngIf="!interacting" style=" width: 80%; margin: 10% 10% 10% 10%">
+        <div class="col-12 my-3">
             <button
-            *ngIf="!interacting"
             mat-raised-button
             color="primary"
             (click)="onInitSession()"
-            style="border-radius: 1em 1em 1em 1em;">
-            Interact
+            style="border-radius: 1em 1em 1em 1em;"
+            class="px-3 py-5 w-100">
+            <mat-icon>panorama_horizontal</mat-icon>
             </button>
         </div>
     </div>
-    <ul>
-    <li *ngFor="let item of emotionResult | async">
-        {{ item.name }}
-        {{ item.score }}
-    </li>
-    </ul>
-    <div class="row">
+    <div class="row" *ngIf="interacting" style=" width: 80%; margin: 10% 10% 10% 10%">
         <div class="col-12">
             <app-interact-session
-                *ngIf="interacting"
                 [actionsCollectionData]="actionsCollection"
             ></app-interact-session>
+        </div>
+    </div>
+    <div class="row my-4 justify-content-center" style=" width: 80%; margin: 10% 10% 10% 10%">
+        <div *ngFor="let value of recentProgressColorValues" class="col-2">
+            <button mat-fab style="padding: 2em" [ngStyle]="{'backgroundColor': value, 'text-align': 'center'}" class="">
+                <!-- <mat-icon [ngStyle]="{'color': value, 'text-align': 'center'}" class="w-100">lens</mat-icon> -->
+            </button>
+        </div>
+    </div>
+    <div class="row" style=" width: 80%; margin: 10% 10% 10% 10%">
+        <div class="col-12">
+            <button mat-flat-button class="color-container w-100" type="button" (click)="onChangeColor(globalColor)" style="padding: 10em 4em 10em 4em"  [ngStyle]="{'background-color': globalColor}" >
+
+            </button>
         </div>
     </div>
 </div>

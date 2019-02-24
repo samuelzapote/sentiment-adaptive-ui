@@ -1,8 +1,45 @@
-<button
-    class="mr-2"
-    *ngFor="let element of actionData.options"
-    mat-stroked-button
-    (click)="onActionComplete(element)"
->
-    {{ element }}
-</button>
+<div class="row">
+    <div class="col" *ngFor="let element of actionData.options">
+        <div [ngSwitch]="element">
+            <button 
+            *ngSwitchCase="'good'" 
+            mat-flat-button
+            (click)="onActionComplete(element)"
+            >
+                <img src="../../../../assets/images/emojis/1f600.png" style="width:75%">
+            </button>
+            
+            <button 
+            *ngSwitchCase="'okay'" 
+            mat-flat-button
+            (click)="onActionComplete(element)"
+            >
+                <img src="../../../../assets/images/emojis/1f612.png" style="width:75%">
+            </button>
+
+            <button 
+            *ngSwitchCase="'great'" 
+            mat-flat-button
+            (click)="onActionComplete(element)"
+            >
+                <img src="../../../../assets/images/emojis/1f601.png" style="width:75%">
+            </button>
+
+            <button 
+            *ngSwitchCase="'bad'" 
+            mat-flat-button
+            (click)="onActionComplete(element)"
+            >
+                <img src="../../../../assets/images/emojis/1f613.png" style="width:75%">
+            </button>
+
+            <button 
+            *ngSwitchCase="'eh'" 
+            mat-flat-button
+            (click)="onActionComplete(element)"
+            >
+                <img src="../../../../assets/images/emojis/1f610.png" style="width:75%">
+            </button>
+        </div>
+    </div>
+</div>

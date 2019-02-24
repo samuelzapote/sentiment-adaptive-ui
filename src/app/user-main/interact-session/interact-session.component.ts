@@ -21,6 +21,9 @@ export class InteractSessionComponent implements OnInit {
             console.log("Actions Done!");
             this.currentAction = undefined;
             this.publishResponseData(this.collectiveResponseData);
+            this.actionIndex = 0;
+            this.collectiveResponseData = '';
+            this.runDeterminedAction();
         } else {
             this.collectiveResponseData += selectedData + " ";
             this.actionIndex = this.actionIndex + 1;
@@ -37,12 +40,14 @@ export class InteractSessionComponent implements OnInit {
     }
 
     public publishResponseData(responseData: string) {
-        return this.sentimentService
-            .getPrediction(responseData)
-            .pipe(first())
-            .subscribe((r) => {
-                console.log(r);
-            });
+
+        // return this.sentimentService
+        //     .getPrediction(responseData)
+        //     .pipe(first())
+        //     .subscribe((r) => {
+        //         console.log(r);
+        //     });
+        console.log(responseData)
     }
 
     public runDeterminedAction() {

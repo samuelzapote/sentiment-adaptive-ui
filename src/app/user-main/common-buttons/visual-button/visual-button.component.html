@@ -1,7 +1,10 @@
-<button
-    *ngFor="let element of actionData.options"
-    mat-flat-button
-    (click)="onActionComplete(element)"
->
-    {{ element }}
-</button>
+<div class="row">
+    <div class="col" *ngFor="let element of actionData.options">
+        <button
+            mat-flat-button
+            (click)="onActionComplete(element)"
+        >
+            {{ element }}
+        </button>
+    </div>
+</div>

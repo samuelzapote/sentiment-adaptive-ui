@@ -8,7 +8,6 @@ import { Action } from "../actions.model";
     styleUrls: ["./user-main.component.css"],
 })
 export class UserMainComponent {
-    public actionIndex = 0;
     public actionsCollection: Action[] = [
         {
             type: "image",

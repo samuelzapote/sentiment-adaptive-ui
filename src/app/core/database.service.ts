@@ -5,6 +5,11 @@ import { map, switchMap } from "rxjs/operators";
 
 import { EngagedCase } from "../shared/models/engaged-case.model";
 
+export interface SentimentResult {
+    name: string;
+    score: number;
+}
+
 @Injectable({
     providedIn: "root",
 })
@@ -17,8 +22,8 @@ export class DatabaseService {
         this.firestore.collection("cases").add(data);
     }
 
-    public getEngagedCases(): Observable<EngagedCase[]> {
+    public getEngagedCases(): Observable<SentimentResult[]> {
         // Retrieve a real-time updated list
-        return this.firestore.collection<EngagedCase>("cases").valueChanges();
+        return this.firestore.collection<SentimentResult>("sentiment").valueChanges();
     }
 }

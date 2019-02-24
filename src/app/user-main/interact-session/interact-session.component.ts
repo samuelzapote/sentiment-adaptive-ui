@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-interact-session',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./interact-session.component.css']
 })
 export class InteractSessionComponent implements OnInit {
+  @Input() actionsCollectionData
   public actionsOrder: string[] = ['dynamic', 'image', 'text', 'visual'];
   public actionIndex: number = 0;
   public currentAction: string = '';
@@ -21,8 +22,9 @@ export class InteractSessionComponent implements OnInit {
   };
 
   executeNextAction() {
-    if (this.actionIndex >= this.actionsOrder.length) {
+    if (this.actionIndex >= this.actionsOrder.length - 1) {
       console.log('Actions Done!');
+      this.currentAction = '';
     } else {
       this.actionIndex = this.actionIndex + 1;
       this.runDeterminedAction();
